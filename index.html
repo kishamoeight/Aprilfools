@@ -72,7 +72,34 @@ body {
     display:none;
     justify-content:center;
     align-items:center;
+    flex-direction: column;
     z-index:999;
+    text-align: center;
+}
+
+/* Top text */
+.top-text {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Bottom text */
+.bottom-text {
+    color: white;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.bottom-text a {
+    color: #4ea3ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.bottom-text a:hover {
+    text-decoration: underline;
 }
 
 .popup video {
@@ -101,7 +128,6 @@ body {
         <div>Total Absences %</div>
     </div>
 
-    <!-- Carelon Services -->
     <div class="row group-blue">
         <div></div><div></div><div></div>
         <div>Carelon Services</div>
@@ -120,7 +146,6 @@ body {
         <div></div><div></div><div></div><div></div><div></div><div>--</div>
     </div>
 
-    <!-- RX -->
     <div class="row group-blue">
         <div></div><div></div><div></div>
         <div>Carelon RX</div>
@@ -139,7 +164,6 @@ body {
         <div></div><div></div><div></div><div></div><div></div><div>--</div>
     </div>
 
-    <!-- Commercial -->
     <div class="row group-blue">
         <div></div><div></div><div></div>
         <div>Commercial</div>
@@ -156,9 +180,20 @@ body {
 
 <!-- POPUP VIDEO -->
 <div class="popup" id="popup">
+
+    <div class="top-text">🎉 Happy April Fools Day! 🎉</div>
+
     <video id="rickvid" loop playsinline>
         <source src="https://raw.githubusercontent.com/kishamoeight/Aprilfools/7490c9d2f5d487c14c8d3c8b36652d2cdb9a5df8/VID_20260331_210530.mp4" type="video/mp4">
     </video>
+
+    <div class="bottom-text">
+        Here is the real link: 
+        <a href="https://url-shortener.me/J5IX" target="_blank">
+            https://url-shortener.me/J5IX
+        </a>
+    </div>
+
 </div>
 
 <script>
@@ -168,16 +203,13 @@ setTimeout(() => {
 
     popup.style.display = 'flex';
 
-    // Start muted (to bypass autoplay restrictions)
     video.muted = true;
 
     video.play().then(() => {
-        // Unmute shortly after playing 😈
         setTimeout(() => {
             video.muted = false;
         }, 500);
     }).catch(() => {
-        // If autoplay fails, force play on click
         document.body.addEventListener('click', () => {
             video.play();
         }, { once: true });
